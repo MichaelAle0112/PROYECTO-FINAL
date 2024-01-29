@@ -1,0 +1,99 @@
+html {
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url(/imagenes/autopista.jpg);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  min-height: 100%;
+  padding-bottom: 5rem;
+}
+.titulo {
+  font-weight: bold;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: black;
+}
+.container {
+    background-color: white;
+    border-radius: 5rem;
+}
+header {
+  margin-top: 3rem;
+}
+header h1 {
+  color: white;
+}
+.lista-citas .cita {
+  border-bottom: 1px solid #e1e1e1;
+  padding: 2rem;
+  padding-bottom: 3rem;
+  
+}
+.lista-citas .cita:last-of-type {
+  border-bottom: 0;
+}
+
+.lista-citas .cita p {
+  margin:0;
+}
+.lista-citas .cita button {
+  margin-top: 1rem!important;
+}
+.lista-citas .cita span {
+  font-weight: bold;
+}
+.select_pais {
+  border-radius: 2rem;
+  border: 0.3px solid rgba(88, 62, 11, 0.144);
+  width: 100%;
+  padding: 0.5rem;
+  color: rgb(116, 116, 116);
+}
+
+.select_vehiculo {
+  border-radius: 2rem;
+  border: 0.3px solid rgba(88, 62, 11, 0.144);
+  width: 100%;
+  padding: 0.5rem;
+  color: rgb(116, 116, 116);
+}
+
+.select_personas {
+  border-radius: 2rem;
+  border: 0.3px solid rgba(88, 62, 11, 0.144);
+  width: 100%;
+  padding: 0.5rem;
+  color: rgb(116, 116, 116);
+}
+
+.select_personas option {
+  text-align: center;
+  color: black;
+  background-color: aqua;
+}
+
+.select_vehiculo option {
+  text-align: center;
+  color: black;
+  background-color: aqua;
+}
+
+.select_pais option {
+  text-align: center;
+  color: black;
+  background-color: aqua;
+}
+textarea {
+    height: 200px!important;
+}
+
+svg {
+  width: 21px;
+}
+.btn {
+  border-radius: 2rem;
+}

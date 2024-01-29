@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Solicitar vehiculos</title>
+    <link rel="stylesheet" href="../solicitar/bootstrap.css">
+    <link rel="stylesheet" href="../solicitar/styles.css">
+</head>
+<body>
+    <h2 class="text-center my-5 titulo">Reservas de vehiculos</h2>
+    <div class="container mt-5 p-5">
+        <div id="contenido" class="row">
+            <div class="col-md-6 agregar-vuelo">
+                <form id="nuevo-boleto">
+                    <legend class="mb-4">Datos del viaje</legend>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Nombre del Pasajero:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="text" id="pasajero" name="pasajero" class="form-control" placeholder="Nombre del Pasajero">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Cédula de Identidad:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="text" id="cedula" name="cedula" class="form-control" placeholder="Cédula de Identidad">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Vehiculo</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <select name="Vehiculo" id="Vehiculo" class="select_vehiculo">
+                                <option value="0">SELECCIONA EL VEHICULO</option>
+                                <option value="KIA">KIA</option>
+                                <option value="SPRINTER">SPRINTER</option>
+                                <option value="SPARK">SPARK</option>
+                                <option value="SPACEFOX">SPACEFOX</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Cantida de personas</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <select name="personas" id="personas" class="select_personas">
+                                <option value="0">SELECCIONA LA CANTIDAD</option>
+                                <option value="1-4">1-4</option>
+                                <option value="5-10">5-10</option>
+                                <option value="10-20">10-20</option>
+                                <option value="Mas de 20">Mas de 20</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Origen</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <select name="origen" id="origen" class="select_pais">
+                                <option value="0">SELECCIONA EL ORIGEN</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Anzoátegui">Anzoátegui</option>
+                                <option value="Apure">Apure</option>
+                                <option value="Aragua">Aragua</option>
+                                <option value="Barinas">Barinas</option>
+                                <option value="Bolívar">Bolívar</option>
+                                <option value="Carabobo">Carabobo</option>
+                                <option value="Cojedes">Cojedes</option>
+                                <option value="Delta Amacuro">Delta Amacuro</option>
+                                <option value="Dependencias Federales">Dependencias Federales</option>
+                                <option value="Distrito Federal">Distrito Federal</option>
+                                <option value="Falcón">Falcón</option>
+                                <option value="Guárico">Guárico</option>
+                                <option value="Lara">Lara</option>
+                                <option value="Mérida">Mérida</option>
+                                <option value="Miranda">Miranda</option>
+                                <option value="Monagas">Monagas</option>
+                                <option value="Nueva Esparta">Nueva Esparta</option>
+                                <option value="Portuguesa">Portuguesa</option>
+                                <option value="Sucre">Sucre</option>
+                                <option value="Táchira">Táchira</option>
+                                <option value="Trujillo">Trujillo</option>
+                                <option value="Vargas">Vargas</option>
+                                <option value="Yaracuy ">Yaracuy </option>
+                                <option value="Zulia">Zulia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Destino</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <select name="destino" id="destino" class="select_pais">
+                                <option value="0">SELECCIONA EL ORIGEN</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Anzoátegui">Anzoátegui</option>
+                                <option value="Apure">Apure</option>
+                                <option value="Aragua">Aragua</option>
+                                <option value="Barinas">Barinas</option>
+                                <option value="Bolívar">Bolívar</option>
+                                <option value="Carabobo">Carabobo</option>
+                                <option value="Cojedes">Cojedes</option>
+                                <option value="Delta Amacuro">Delta Amacuro</option>
+                                <option value="Dependencias Federales">Dependencias Federales</option>
+                                <option value="Distrito Federal">Distrito Federal</option>
+                                <option value="Falcón">Falcón</option>
+                                <option value="Guárico">Guárico</option>
+                                <option value="Lara">Lara</option>
+                                <option value="Mérida">Mérida</option>
+                                <option value="Miranda">Miranda</option>
+                                <option value="Monagas">Monagas</option>
+                                <option value="Nueva Esparta">Nueva Esparta</option>
+                                <option value="Portuguesa">Portuguesa</option>
+                                <option value="Sucre">Sucre</option>
+                                <option value="Táchira">Táchira</option>
+                                <option value="Trujillo">Trujillo</option>
+                                <option value="Vargas">Vargas</option>
+                                <option value="Yaracuy ">Yaracuy </option>
+                                <option value="Zulia">Zulia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Teléfono:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="tel" id="telefono" name="telefono" class="form-control"  placeholder="Número de Teléfono">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Fecha salida:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="date" id="fecha" name="fecha" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Fecha llegada:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="date" id="fecha" name="fecha" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-lg-4 col-form-label">Hora:</label>
+                        <div class="col-sm-8 col-lg-8">
+                            <input type="time" id="hora" name="hora" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <button type="submit" class="btn btn-success w-100 d-block">Completar reserva</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2 id="administra" class="mb-4">Viajes Seleccionados</h2>
+                <ul id="vuelos" class="list-group lista-vuelos"></ul>
+            </div>
+        </div> <!--.row-->
+    </div><!--.container-->
+
+    <script src="citas2.js"></script>
+
+</body>
+</html>
