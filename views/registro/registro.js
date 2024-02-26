@@ -1,126 +1,94 @@
-//console.log('prueba')
-//import { createNotification } from "../components/notificaciones";
+// Seleccionar los elementos del formulario
+const createUserForm = document.querySelector("#form-register");
+const createNameInput = document.querySelector("#create-name-input");
+const createLastnameInput = document.querySelector("#create-lastname-input");
+const createCedulaInput = document.querySelector("#create-id-input");
+const createCelularInput = document.querySelector("#create-phone-input");
+const createEmailInput = document.querySelector("#create-Email-input");
+const createUsernameInput = document.querySelector("#create-username-input");
+const createPasswordInput = document.querySelector("#create-password-input");
 
-//selectores
-const formulario = document.querySelector('#formulario');
-const nameInput = document.querySelector('#name-input')
-const emailInput = document.querySelector('#email-input');
-const passwordInput = document.querySelector('#password-input');
-const matchInput = document.querySelector('#match-input');
-const btnRegistro = document.querySelector('#form-btn');
-const notificacion = document.querySelector('#notificacion');
-//const express = require('express');
-//import express from 'express';
-//const axios = require('axios/dist/node/axios.cjs'); 
-//console.log(axios);
+// Agregar el event listener al formulario
+createUserForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-//validar con regex = regular express
-const nameVal = /[A-z]{3}([A-z]\s?)+/igm;
-const emailVal = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-const passwordVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+  // Validar que no haya campos vacíos
+  if (
+    !createNameInput.value ||
+    !createLastnameInput.value ||
+    !createCedulaInput.value ||
+    !createCelularInput.value ||
+    !createEmailInput.value ||
+    !createUsernameInput.value ||
+    !createPasswordInput.value
+  ) {
+    alert("Por favor, complete todos los campos");
+    //console.log(event);
+    return;
+  } else {
+    //console.log(createCedulaInput.value);
+    try {
+      const newUser = {
+        nombre: createNameInput.value,
+        apellido: createLastnameInput.value,
+        cedula: createCedulaInput.value,
+        celular: createCelularInput.value,
+        correo: createEmailInput.value,
+        usuario: createUsernameInput.value,
+        password: createPasswordInput.value,
+        verified: false
+      };
 
+      console.log(newUser);
 
-let valname = false;
-let valemail = false;
-let valpass = false;
-let valMatch = false;
+      // save in db
+      axios
+        .post("https://chicharronera.onrender.com/newuser", newUser)
+        .then((info) => {
+          if(info.status && info.status == 201){
+            location.href = '../home/index.html'
+          }
+        })
+        .catch((e) => {
+          if(e.response && e.response.status == 404){
+            alert('Este usuario ya existe!');
+          }
+          console.log(e);
+        });
 
+      // Consulta con axios
+      // const axiosResponse = await axios.post('/api/users', newUser);
+      // console.log(axiosResponse);
 
-nameInput.addEventListener('input', e=>{
-    //console.log(e.target.value)
-    valname= nameVal.test(e.target.value);
-    //console.log(valname)
-    validar(nameInput,valname);
-})
-
-emailInput.addEventListener('input', e=>{
-    //console.log(e.target.value)
-    valemail= emailVal.test(emailInput.value);
-    //console.log(valemail)
-    validar(emailInput,valemail);
-
-    
-})
-
-
-passwordInput.addEventListener('input', e =>{
-    //console.log(e.target.value)
-    valpass= passwordVal.test(e.target.value);
-     //console.log(valpass)
-    validar(passwordInput,valpass);
-    validar(matchInput,valMatch);
-})
-
-matchInput.addEventListener('input', e =>{
-    //console.log(e.target.value)
-    valMatch= e.target.value === passwordInput.value;
-     //console.log(valMatch)
-    validar(matchInput,valMatch); 
-    validar(passwordInput,valpass);
-})
-
-const validar = (input,val)=>{
-
-    btnRegistro.disabled = valname && valemail && valpass && valMatch ? false : true;
-
-    //console.log('validar')
-    if(val){
-        //Si arroja TRUE
-        //console.log('verdadero')
-        input.classList.remove('focus:text-black');
-        input.classList.add('focus:text-green-700');
-
-    }else if(input.value === ''){
-        //PARA QUITAR LOS COLORES
-        input.classList.remove('focus:text-green-700');
-        input.classList.remove('focus:text-red-700');
-        input.classList.remove('focus:text-black');
-
-    }else{
-        //SI ARROJA FALSE
-        input.classList.remove('focus:text-black');
-        input.classList.remove('focus:text-green-700');
-        input.classList.add('focus:text-red-700');
+      // // Verificar si el usuario ya existe
+      // const existingUser = users.find((user) => user.username === createUsernameInput.value);
+    } catch (error) {
+      // Mostrar mensaje de error
+      alert("Error al registrar el usuario");
+      //console.log(error);
     }
-}
+  }
+  async function createUser() {
+    const response = await fetch("/newuser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        correo: "example@example.com",
+        password: "password123"
+      })
+    });
 
+    const data = await response.json();
 
-
-
-formulario.addEventListener('submit',async e=>{
-    e.preventDefault();
-
-    try{
-        const newUser = {
-            name:nameInput.value,
-            email:emailInput.value,
-            password:passwordInput.value
-        }
-        //muestra anivel de estructura del fond
-        console.log(newUser);
-
-        //consulta con axios
-        const response = await axios.post('/api/users',newUser)
-        //muestra a nivel de backend (muestra en el servidor (terminal))
-        console.log(response);
-
-        //const parametroURL = new URLSearchParams(window.location.pathname)
-        //console.log(parametroURL)
-        //app.get('*', (req, res) =>{
-            //res.render('/login')
-        //});
-
-        //window.location.href = './user.html'
-        
-    }catch(error){
-        //createNotification(true,error.response.data.error);
-        alert("error");
-
-        //setTimeout(() => {
-         //   notificacion.classList.add('hidden');
-        //}, 1000);
+    if (response.status === 400 && data.redirectTo) {
+      // Redirigir a la ruta especificada en la respuesta
+      window.location.href = data.redirectTo;
     }
-})
+  }
 
+  createUser();
 
-
+  
+});

@@ -7,6 +7,8 @@ const usersRouter = require('./controllers/userss');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const PORT = 3001;
+const port = process.env.PORT || PORT;
 
 //conexion a la bd
 
