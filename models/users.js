@@ -10,9 +10,21 @@ const UserSchema = moongose.Schema(
             type: String,
             required: [true, "Please enter a name"]
         },
+        apellido:{
+            type: String,
+            required: [true, "Please enter a lastname"]
+        },
+        cedula:{
+            type: String,
+            required: [true, "Please enter a ci"]
+        },
         correo:{
             type: String,
             required: [true, "Please enter a email"]
+        },
+        usuario:{
+            type: String,
+            required: [true, "Please enter a valid user"]
         },
         password:{
             type: String,

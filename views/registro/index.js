@@ -3,9 +3,9 @@ const createUserForm = document.querySelector("#formulario");
 const createNameInput = document.querySelector("#name-input");
 const createEmailInput = document.querySelector("#email-input");
 const createPasswordInput = document.querySelector("#password-input");
-console.log(axios);
-import axios from 'axios';
-import express from 'express';
+//console.log(axios);
+//import axios from 'axios';
+//import express from 'express';
 
 
 // Agregar el event listener al formulario
@@ -29,19 +29,21 @@ createUserForm.addEventListener("submit", async (event) => {
         verified: false
       };
 
-      console.log(newUser);
+      //console.log(newUser);
 
       axios
-        .post("", newUser)
+        .post('', newUser)
         .then((info) => {
           if(info.status && info.status == 201){
             location.href = '../login/index.html'
           }
-        })
-        .catch((e) => {
-          if(e.response && e.response.status == 404){
+
+          else if(info.status && info.status == 404){
             alert('Este usuario ya existe!');
           }
+        })
+        .catch((e) => {
+          
           console.log(e);
         });
 
@@ -63,7 +65,7 @@ createUserForm.addEventListener("submit", async (event) => {
 
     const data = await response.json();
 
-    if (response.status === 400 && data.redirectTo) {
+    if (response.status === 404 && data.redirectTo) {
       // Redirigir a la ruta especificada en la respuesta
       window.location.href = data.redirectTo;
     }
