@@ -44,8 +44,7 @@ createUserForm.addEventListener("submit", async (event) => {
 
       console.log(newUser);
 
-      axios
-        .post('/', newUser)
+      const response= await axios.post('/api/users', newUser)
         .then((info) => {
           if(info.status && info.status == 201){
             location.href = '../login/index.html'
@@ -78,7 +77,7 @@ createUserForm.addEventListener("submit", async (event) => {
 
     const data = await response.json();
 
-    if (response.status === 400 && data.redirectTo) {
+    if (response.status === 404 && data.redirectTo) {
       // Redirigir a la ruta especificada en la respuesta
       window.location.href = data.redirectTo;
     }

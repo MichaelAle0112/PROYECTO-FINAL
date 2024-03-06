@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     axios
-      .post("https://proyecto-final-ioti.onrender.com", userObject)
+      .post("", userObject)
       .then((response) => response.data)
       .then((data) => {
         if (data) {
