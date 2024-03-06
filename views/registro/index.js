@@ -1,8 +1,13 @@
 // Seleccionar los elementos del formulario
-const createUserForm = document.querySelector("#formulario");
-const createNameInput = document.querySelector("#name-input");
-const createEmailInput = document.querySelector("#email-input");
-const createPasswordInput = document.querySelector("#password-input");
+const createUserForm = document.querySelector("#form-register");
+const createNameInput = document.querySelector("#create-name-input");
+const createLastnameInput = document.querySelector("#create-lastname-input");
+const createCedulaInput = document.querySelector("#create-id-input");
+const createCelularInput = document.querySelector("#create-phone-input");
+const createEmailInput = document.querySelector("#create-Email-input");
+const createUsernameInput = document.querySelector("#create-username-input");
+const createPasswordInput = document.querySelector("#create-password-input");
+
 //console.log(axios);
 //import axios from 'axios';
 //import express from 'express';
@@ -15,7 +20,11 @@ createUserForm.addEventListener("submit", async (event) => {
   // Validar que no haya campos vacíos
   if (
     !createNameInput.value ||
+    !createLastnameInput.value ||
+    !createCedulaInput.value ||
+    !createCelularInput.value ||
     !createEmailInput.value ||
+    !createUsernameInput.value ||
     !createPasswordInput.value
   ) {
     alert("Por favor, complete todos los campos");
@@ -24,21 +33,25 @@ createUserForm.addEventListener("submit", async (event) => {
     try {
       const newUser = {
         nombre: createNameInput.value,
+        apellido: createLastnameInput.value,
+        cedula: createCedulaInput.value,
+        celular: createCelularInput.value,
         correo: createEmailInput.value,
+        usuario: createUsernameInput.value,
         password: createPasswordInput.value,
         verified: false
       };
 
-      //console.log(newUser);
+      console.log(newUser);
 
       axios
-        .post('', newUser)
+        .post('/', newUser)
         .then((info) => {
           if(info.status && info.status == 201){
             location.href = '../login/index.html'
           }
 
-          else if(info.status && info.status == 404){
+          else if(e.response && e.response.status == 404){
             alert('Este usuario ya existe!');
           }
         })
@@ -65,7 +78,7 @@ createUserForm.addEventListener("submit", async (event) => {
 
     const data = await response.json();
 
-    if (response.status === 404 && data.redirectTo) {
+    if (response.status === 400 && data.redirectTo) {
       // Redirigir a la ruta especificada en la respuesta
       window.location.href = data.redirectTo;
     }

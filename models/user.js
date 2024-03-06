@@ -1,14 +1,7 @@
 const mongoose = require('mongoose');
-const userRouter = require('../controllers/users');
+const userRouter = require('../controllers/userss');
 
-/*// Conectar a la base de datos
-mongoose.connect('mongodb://127.0.0.1:27017/restfinal', {
-  useNewUrlParser: true, //asunto interno de la biblioteca
-  useUnifiedTopology: true,
-});*/
-
-// Definir el esquema para Usuarios
-const usuarioSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   nombre: String,
   apellido: String,
   cedula: String,
@@ -22,7 +15,6 @@ const usuarioSchema = new mongoose.Schema({
   }
 });
 
-// Configurar la respuesta del usuario en el schema
 UserSchema.set('toJSON',{
    transform: (document,returnObject)=>{
     returnObject.id= returnObject._id.toString();
@@ -30,8 +22,6 @@ UserSchema.set('toJSON',{
    }
 })
 
-//Seleccionamos un nombre, registrar el modelo , tablas del modelo
 const User = mongoose.model('User', UserSchema);
 
-//se exporta
 module.exports= User;
