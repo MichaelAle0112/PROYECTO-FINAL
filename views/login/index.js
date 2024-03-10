@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.data)
       .then((data) => {
         if (data) {
-            window.location.href = "../home/index.html";
+            window.location.href = "../usuarios/index.html";
           }
          else {
           alert("Credenciales inválidas. Inténtalo de nuevo.");

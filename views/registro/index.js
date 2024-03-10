@@ -7,9 +7,28 @@ const createCelularInput = document.querySelector("#create-phone-input");
 const createEmailInput = document.querySelector("#create-Email-input");
 const createUsernameInput = document.querySelector("#create-username-input");
 const createPasswordInput = document.querySelector("#create-password-input");
+
+let valemail = false;
+let valPass = false;
 //console.log(axios);
 //import axios from 'axios';
 //import express from 'express';
+
+const emailVal = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+const passwordVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm
+
+createEmailInput.addEventListener('input', e=>{
+  //console.log(e.target.value);
+  valemail = emailVal.test(e.target.value);
+  //console.log(valemail);
+  validar(createEmailInput,valemail);
+})
+
+createPasswordInput.addEventListener('input',e=>{
+  valPass = passwordVal.test(e.target.value);
+  validar(createPasswordInput,valPass);
+  validar(matchInput,valMatch);
+})
 
 
 // Agregar el event listener al formulario
