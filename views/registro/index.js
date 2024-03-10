@@ -7,7 +7,6 @@ const createCelularInput = document.querySelector("#create-phone-input");
 const createEmailInput = document.querySelector("#create-Email-input");
 const createUsernameInput = document.querySelector("#create-username-input");
 const createPasswordInput = document.querySelector("#create-password-input");
-
 //console.log(axios);
 //import axios from 'axios';
 //import express from 'express';
@@ -16,6 +15,7 @@ const createPasswordInput = document.querySelector("#create-password-input");
 // Agregar el event listener al formulario
 createUserForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+  //console.log (createNameInput.value)
 
   // Validar que no haya campos vacíos
   if (
@@ -30,39 +30,35 @@ createUserForm.addEventListener("submit", async (event) => {
     alert("Por favor, complete todos los campos");
     return;
   } else {
-    try {
       const newUser = {
-        nombre: createNameInput.value,
+        name: createNameInput.value,
         apellido: createLastnameInput.value,
         cedula: createCedulaInput.value,
         celular: createCelularInput.value,
-        correo: createEmailInput.value,
+        email: createEmailInput.value,
         usuario: createUsernameInput.value,
         password: createPasswordInput.value,
         verified: false
       };
 
-      console.log(newUser);
+      console.log('datos front',newUser);
 
-      const response= await axios.post('/api/users', newUser)
+      axios.post("/api/users", newUser)
         .then((info) => {
           if(info.status && info.status == 201){
             location.href = '../login/index.html'
-          }
-
-          else if(e.response && e.response.status == 404){
-            alert('Este usuario ya existe!');
+            console.log ('se ha registrado')
           }
         })
         .catch((e) => {
-          
+          if(e.res && e.res.status == 404){
+            alert('Este usuario ya existe!');
+          }
           console.log(e);
         });
-
-    } catch (error) {
-      alert("Error al registrar el usuario");
-    }
+  
   }
+  /*
   async function createUser() {
     const response = await fetch("/newuser", {
       method: "POST",
@@ -84,6 +80,7 @@ createUserForm.addEventListener("submit", async (event) => {
   }
 
   createUser();
+  */
 
   
 });

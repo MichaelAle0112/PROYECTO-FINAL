@@ -50,10 +50,10 @@ app.use(morgan('tiny'));
 
 //rutas backhend
 
-app.use('/api/userss',usersRouter);
+app.use('/api/users',usersRouter);
 
 //api
-
+/*
 app.post("/newuser", async (req, res) => {
     const { correo, password } = req.body;
     const errorMessage = "El correo y clave ya existen en la base de datos.";
@@ -101,6 +101,7 @@ app.post("/newuser", async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   });
+  */
   
   mongoose.set("strictQuery", false);
   

@@ -11,11 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const userObject = {
       correo: username,
-      password,
+      contraseña: password,
     };
 
-    axios
-      .post("", userObject)
+    axios.get("/api/users", userObject)
       .then((response) => response.data)
       .then((data) => {
         if (data) {
